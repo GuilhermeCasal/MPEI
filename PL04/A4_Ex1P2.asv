@@ -1,0 +1,24 @@
+n = 8000;
+palavras = 1000;
+k = 3;
+
+dicionario = generator_uniform(n, palavras, palavras);
+BF = inicializar(n);
+
+for i = 1:palavras
+    BF = inserir(dicionario{i}, BF, k);
+end
+
+function BF = inicializar(n)
+    BF = false(1,n);
+end
+
+function BF = inserir(elemento, BF, k)
+    key = elemento;
+    for i = 1:k
+        key = [key num2str(i)];
+        hc = string2hash(key);
+        pur = rem(hc, size(BF));
+        BF(pur) = true;
+    end
+end

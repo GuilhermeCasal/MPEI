@@ -6,10 +6,10 @@
 
 %% (a) Crie em Matlab a matriz de transic¸ao de estados que representa as trocas entre grupos. ˜
 %% Confirme que se trata de uma matriz estocastica.
-
-T = [1/3 1/4 0
-     1/3 11/20 1/2
-     1/3 1/5 1/2];
+%     A     B     C
+T = [1/3   1/4    0  
+     1/3   11/20  1/2
+     1/3   1/5    1/2];
 format rat;
 T
 sum(T)
@@ -17,13 +17,27 @@ sum(T)
 
 %% (b) Crie o vector relativo ao estado inicial considerando que no total temos 90 alunos, o grupo A tem
 %% o dobro da soma dos outros dois e os grupos B e C tem o mesmo n ˆ umero de alunos.
-v0 = [60 15 15]'/90
+v1 = [60 15 15]'/90;
 
-
-%ALINEA C
-v0 = [60 15 15]'/90
-v30 = T^30 *v0;
+%% (c) Quantos elementos integrarao cada grupo no fim da aula 30 considerando como estado inicial o ˜
+%% definido na al´ınea anterior?
+numAulas = 30;
+for aula = 2:numAulas
+    v1 = T*v1;
+end
 format short
-n = v30 * 90
+RespostaC = v1*90
 
+%OU 
+%v30 = T^30 *v1;
+%format short
+%n = v30 * 90
+
+%% Quantos elementos integrarao cada grupo no fim da aula 30 considerando que inicialmente se dis- ˜
+%% tribuiram os 90 alunos equitativamente pelos 3 grupos?
+
+v2 = [30 30 30]'/90;
+aula30 = T^30 * v2;
+format short
+RespostaD = aula30*90
 
