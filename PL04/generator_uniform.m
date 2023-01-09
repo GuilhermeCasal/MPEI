@@ -10,30 +10,24 @@
 
 %% (a) Gere um conjunto de N = 105 chaves usando todas as letras maiusculas e min ´ usculas ( A% a %Z  e ´
 %% %a% a  z’) com igual probabilidade e em que imin = 6 e imax = 20.
-function lst = generator_uniform(N,imin,imax,alphabete)
+function lst = generator_uniform(N, imin, imax, alphabete)
 
-%N = 10
-%imin = 5
-%imax = 20
-
+%se tiver menos de 4 parametros de entrada na função vai assumir este
+%alfabeto
 if nargin < 4
-    alphabete = ['a':'z' 'A':'Z' '0':'9']
+    alphabete = ['a':'z' 'A':'Z' '0':'9'];
 end
 
-%Obter comprimentos
-comprimento = randi([imin, imax], 1, N)
+% Obter comprimentos
 
+comprimentos = randi([imin,imax],1,N);
+
+%inicilizar cell array
 lst = cell(N,1);
 
-%gerar 1 a 1 as palavras 
-for i=1:N
-    pos = randi([1, length(alphabete)], 1, comprimento(i));
+for i = 1:N
+    pos = randi([1, length(alphabete)], 1, comprimentos(i));
     word = alphabete(pos);
-    
-    % fprintf(1, '%2d - %d - %s\n', i, comprimento(i), word) sem o
-    % generator faz print só para ver como está a funcionar
-
-    % Guardar em cell Array
     lst{i} = word;
 end
 

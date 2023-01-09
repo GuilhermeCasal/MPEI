@@ -6,28 +6,27 @@
 
 %% (a) Guarde um vetor com os hashcodes obtidos.
 
-N = 1e2;
+N = 5e5;
 palavras = generator_uniform(N,2,20);
-T = 1e5 %hash table size
+T = 1e5; %hash table size
 
 hashcodes = zeros(size(palavras))
 num_atribuicoes = zeros(1,T)
-
-for i=1:N
+tic
+for i = 1:N
     hash = string2hash(palavras{i});
     hash = rem(hash,T);
-
-    %guardar os hashcodes parte2 podes tirar isto primeiro para perceber o
-    %que esta a acontecer
+    
+    %alinea b)
     hashcodes(i) = hash;
-    num_atribuicoes(hash) = num_atribuicoes(hash)+1;
-
+    num_atribuicoes(hash) = num_atribuicoes(hash) + 1;
 
     fprintf(1, "%-20s -> %d\n", palavras{i},hash);
 end
+tempo = toc;
 
 %parte 3 colisoes
 num_colisoes = sum(num_atribuicoes > 1)
 num_colisoes / T
-
+tempo
 
