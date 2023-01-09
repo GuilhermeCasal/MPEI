@@ -31,26 +31,26 @@ v = T^3 * v
 %% perda de pacote sem o codigo corretor de erros?
 
 %NOT SURE
-no_erros = v(1);
-um__erro = v(2);
-dois_erros = v(3);
+%no_erros = v(1);
+%um__erro = v(2);
+%dois_erros = v(3);
 
-v = [0 0 1]';
-v2 = T * v;
-x1 = (v2(1) - v(1));
-x2 = (v2(2) - v(2));
-x3 = (v2(3) - v(3));
+%v = [0 0 1]';
+%v2 = T * v;
+%x1 = (v2(1) - v(1));
+%x2 = (v2(2) - v(2));
+%x3 = (v2(3) - v(3));
 
-while x > 0.001 | x2 > 0.001 | x3 > 0.001
-    v = v2;
-    v2 = T * v2;
-    x = (v2(1) - v(1));
-    x2 = (v2(2) - v(2));
-    x3 = (v2(3) - v(3));
-end
+%while x > 0.001 | x2 > 0.001 | x3 > 0.001
+%    v = v2;
+%    v2 = T * v2;
+%    x = (v2(1) - v(1));
+%   x2 = (v2(2) - v(2));
+%    x3 = (v2(3) - v(3));
+%end
 
-v2(2)
-v2(3)
+%v2(2)
+%v2(3)
 
 %% 2) Considere que tem um pequeno conjunto de paginas web identificadas pelas letras C a G com as ´
 %% seguintes ligac¸oes entre si no dia 1 de janeiro de 2017: a p ˜ agina C tem links para as p ´ aginas D e E; D ´
@@ -61,11 +61,11 @@ v2(3)
 %% as probabilidades de transic¸ao entre p ˜ aginas (da ´ i para a j);[1N]N×N e uma matriz de N por N com todas
 %% as entradas iguais a 1/N; N representa o numero de p ´ aginas. Assuma ´ β = 0.8
 
-H = [ 0   1   1   1   0
-      1   0   0   1   1
-      1   1   1   1   0
-      0   0   0   0   1
-      0   0   1   1   0];
+H = [ 0   1/2 1/3 1/4 0
+      1/2 0   1/3 1/4 1/2
+      1/2 1/2 1/3 1/4 0
+      0   0   0   0   1/2
+      0   0   1/3 1/4 0];
 
 Beta = 0.8;
 N = ones(5)/5;
